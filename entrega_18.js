@@ -1,13 +1,13 @@
 var readline = require("readline-sync")
-/* console.log("------------------------------------------");
+
+ console.log("------------------------------------------");
 console.log("|            SISTEMA PETSMILE            |");
 console.log("|----------------------------------------|");
 console.log("|\t\t\t\t\t |");
-console.log("|\t Usuário:   \t\t\t |");
-console.log("|\t Senha:   \t\t\t |");
+console.log("|\tUsuário:   \t\t\t |");
+console.log("|\tSenha:   \t\t\t |");
 console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|");
-console.log("Escolha uma opção: "); 
 
 
 console.log("------------------------------------------");
@@ -29,6 +29,7 @@ console.log("|\t\t\t\t\t |");
 console.log("|\t    (1) Vendas Pendentes  \t |");
 console.log("|\t    (2) Vendas Realizadas   \t |");
 console.log("|\t    (3) Vendas Canceladas  \t |");
+console.log("|\t\t\t\t\t |");
 console.log("|\t    (4) Voltar  \t\t |");
 console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|");
@@ -44,7 +45,7 @@ console.log("|\t  (1)\t   #07 \t    R$ 350,00    |");
 console.log("|\t  (2)\t   #08 \t    R$ 115,00    |");
 console.log("|\t  (3)\t   #09 \t    R$ 20,00     |");
 console.log("|\t\t\t\t\t |");
-console.log("|\t  (0) Para Voltar \t\t |");
+console.log("|\t  (0) Voltar \t\t\t |");
 console.log("|________________________________________|");
 console.log("Escolha uma opção: "); 
 
@@ -55,7 +56,8 @@ console.log("|----------------------------------------|");
 console.log("|\t\t\t\t\t |");
 console.log("|\t (1) Para confirmar a venda\t |");
 console.log("|\t (2) Para cancelar a venda\t |");
-console.log("|\t (3) Para voltar \t\t |");
+console.log("|\t\t\t\t\t |");
+console.log("|\t (0) Voltar \t\t\t |");
 console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|"); 
 console.log("Escolha uma opção: "); 
@@ -70,7 +72,8 @@ console.log("|\t  (1)\t   #01 \t     350,00  \t |");
 console.log("|\t  (2)\t   #02 \t     115,00  \t |");
 console.log("|\t  (3)\t   #03 \t     20,00   \t |");
 console.log("|\t\t\t\t\t |");
-console.log("|\t  (0) Para Voltar \t\t |");
+console.log("|\t  (0) Voltar \t\t\t |");
+console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|"); 
 console.log("Escolha uma opção: "); 
 
@@ -82,7 +85,8 @@ console.log("|\t\t\t\t\t |");
 console.log("|     Ana        350,00         #1       |");
 console.log("|\t\t\t\t\t |");
 console.log("|\t\t\t\t\t |");
-console.log("|    (0) Para Voltar \t\t\t |");
+console.log("|     (0) Voltar \t\t\t |");
+console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|"); 
 console.log("Escolha uma opção: "); 
 
@@ -95,7 +99,8 @@ console.log("|\t  (1)\t   #04 \t    531,35 \t |");
 console.log("|\t  (2)\t   #05 \t    67,21  \t |");
 console.log("|\t  (3)\t   #06 \t    78,00  \t |");
 console.log("|\t\t\t\t\t |");
-console.log("|\t  (0) Para Voltar \t\t |");
+console.log("|\t  (0) Voltar \t\t\t |");
+console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|") 
 console.log("Escolha uma opção: "); 
 
@@ -107,7 +112,8 @@ console.log("|\t\t\t\t\t |");
 console.log("|     Ítalo       531,35       #4        |");
 console.log("|\t\t\t\t\t |");
 console.log("|\t\t\t\t\t |");
-console.log("|    (0) Para Voltar \t\t\t |");
+console.log("|     (0) Voltar \t\t\t |");
+console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|") 
 console.log("Escolha uma opção: "); 
 
@@ -119,6 +125,7 @@ console.log("|\t    (1) Exibir Produtos  \t |");
 console.log("|\t    (2) Editar Produtos   \t |");
 console.log("|\t    (3) Criar Produtos  \t |");
 console.log("|\t    (4) Exluir Produtos \t |");
+console.log("|\t\t\t\t\t |");
 console.log("|\t    (0) Voltar \t\t\t |");
 console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|");
@@ -149,6 +156,7 @@ console.log("| (15 Disponível)                        |");
 console.log("| Shampoo cães adultos 200ml R$21,00     |");
 console.log("| (15 Disponível)                        |");
 console.log("|\t\t\t\t\t |");
+console.log("| (0) Voltar \t\t\t\t |");
 console.log("|________________________________________|"); 
 console.log("Escolha uma opção: "); 
 
@@ -186,12 +194,13 @@ console.log("|________________________________________|");
 console.log("Escolha uma opção: "); 
 console.log("")
 
-readline.questionInt("Informe o novo preço do produto: ") \\ Faz parte da tela de cima
+readline.questionInt("Informe o novo preço do produto: ") // Faz parte da tela de cima
+console.log("Preço alterado com sucesso!");
 
-console.log("Criando novo produto"); \\ Tela de Criar Produto
+console.log("Criando novo produto"); // Tela de Criar Produto
 console.log("");
-readline.questionInt("Informe o nome: ");
-readline.questionInt("Preço: ")
+readline.question("Informe o nome: ");
+readline.questionFloat("Preço: ")
 readline.questionInt("Quantidade em estoque: ")
 console.log("");
 console.log("Produto criado com sucesso!"); 
@@ -214,7 +223,7 @@ console.log("|\t\t\t\t\t |");
 console.log("| (0) Voltar \t\t\t\t |");
 console.log("|\t\t\t\t\t |");
 console.log("|________________________________________|"); 
-console.log("Escolha uma opção: "); */
+console.log("Escolha uma opção: "); 
 
 
 
