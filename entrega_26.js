@@ -1,7 +1,7 @@
-var readline = require("readline-sync")
-var opcao
-var op_estoque
-var opVendas
+const readline = require("readline-sync")
+let opcao
+let op_estoque
+let opVendas
 
 
 
@@ -16,7 +16,7 @@ function telaPrincipal(){
     console.log("|\t\t\t\t\t |");
     console.log("|\t    (1) Vendas   \t\t |");
     console.log("|\t    (2) Estoque   \t\t |");
-    console.log("|\t    (3) Sair do sistema   \t |");
+    console.log("|\t    (0) Sair do sistema   \t |");
     console.log("|\t\t\t\t\t |");
     console.log("|________________________________________|");
     opcao = readline.questionInt("Escolha uma opção: ")
@@ -75,7 +75,7 @@ function telaVendas(){
 
 function telaVenPendente(){
  console.clear()
- for(var opVenPendente = 1; opVenPendente > 0;){
+ for(let opVenPendente = 1; opVenPendente > 0;){
     console.clear()
     console.log("------------------------------------------");
     console.log("|            VENDAS PENDENTES            |");
@@ -104,7 +104,7 @@ function telaVenPendente(){
 
 function telaVenPendente2(){
     console.clear()
-    for(var opVenPendete2 = 4; opVenPendete2 > 2;){
+    for(let opVenPendete2 = 4; opVenPendete2 > 2;){
     console.log("------------------------------------------");
     console.log("|            VENDAS PENDENTES            |");
     console.log("|----------------------------------------|");
@@ -138,7 +138,7 @@ function telaVenPendente2(){
 
 function telaVenRealizadas(){
     console.clear()
-    for(opVenRealizadas = 1; opVenRealizadas > 0;){
+    for(let opVenRealizadas = 1; opVenRealizadas > 0;){
     console.log("------------------------------------------");
     console.log("|            VENDAS REALIZADAS           |");
     console.log("|----------------------------------------|");
@@ -165,7 +165,7 @@ function telaVenRealizadas(){
 
 function telaVenRealizadas2(){
     console.clear()
-    for(var opVenRealizadas2 = 1; opVenRealizadas2 > 0;){
+    for(let opVenRealizadas2 = 1; opVenRealizadas2 > 0;){
         console.log("------------------------------------------");
         console.log("|            VENDAS REALIZADAS           |");
         console.log("|----------------------------------------|");
@@ -199,7 +199,7 @@ function telaVenRealizadas2(){
 
 function telaVenCanceladas(){
     console.clear()
-    for(opVenCanceladas = 1; opVenCanceladas > 0;){
+    for(let opVenCanceladas = 1; opVenCanceladas > 0;){
         console.log("------------------------------------------");
         console.log("|            VENDAS CANCELADAS           |");
         console.log("|----------------------------------------|");
@@ -228,7 +228,7 @@ function telaVenCanceladas(){
 
 function telaVenCanceladas2(){
     console.clear()
-    for(var opVenCanceladas2 = 3; opVenCanceladas2 > 0;){
+    for(let opVenCanceladas2 = 3; opVenCanceladas2 > 0;){
         console.log("------------------------------------------");
         console.log("|            VENDAS CANCELADAS           |");
         console.log("|----------------------------------------|");
@@ -258,7 +258,7 @@ function telaVenCanceladas2(){
 
 function estoque(){
     console.clear()
-    for(var opEstoque = 1; opEstoque > 0;){
+    for(let opEstoque = 1; opEstoque > 0;){
     console.log("------------------------------------------");
     console.log("|                 ESTOQUE                |");
     console.log("|----------------------------------------|");
@@ -298,7 +298,7 @@ function estoque(){
 
 
 function excluirProduto(){
-    for( var opExcluirProduto = 1; opExcluirProduto > 0;){
+    for( let opExcluirProduto = 1; opExcluirProduto > 0;){
         console.clear()
         console.log("------------------------------------------");
         console.log("|             EXCLUIR PRODUTO            |");
@@ -359,7 +359,7 @@ function criarProduto(){
 
 function editarProtudos(){
     console.clear()
-    for(var opEditarProdutos = 1; opEditarProdutos > 0;){
+    for(let opEditarProdutos = 1; opEditarProdutos > 0;){
          console.log("------------------------------------------");
          console.log("|             EDITAR PRODUTOS            |");
          console.log("|----------------------------------------|");
@@ -386,7 +386,7 @@ function editarProtudos(){
 
 function produto1(){
     console.clear()
-    for(var edProtudo1 = 1; edProtudo1 > 0;){
+    for(let edProtudo1 = 1; edProtudo1 > 0;){
         console.log("------------------------------------------");
         console.log("|             EDITAR PRODUTOS            |");
         console.log("|----------------------------------------|");
@@ -431,7 +431,7 @@ function produto1(){
 
 function exibirProdutos(){
     console.clear()
-    for(var opExibirProdutos = 1; opExibirProdutos > 0;){
+    for(let opExibirProdutos = 1; opExibirProdutos > 0;){
         console.log("------------------------------------------");
         console.log("|           PRODUTOS EM ESTOQUE          |");
         console.log("|----------------------------------------|");
