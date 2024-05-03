@@ -2,6 +2,32 @@ const readline = require("readline-sync")
 let opcao
 let op_estoque
 let opVendas
+let idContagem = 2
+
+let racaoCachorro = {
+    id: 1,
+    nome: "Ração seca cachorro 5kg",
+    preco: 50.00,
+    estoque: 15.00,
+}
+
+let racaoGato ={
+    id: 2,
+    nome: "Ração seca gato 5kg",
+    preco: 30.00,
+    estoque: 15,
+    
+}
+
+
+let produtos = [racaoCachorro, racaoGato];
+
+
+
+
+
+
+
 
 
 
@@ -343,11 +369,19 @@ function criarProduto(){
     console.clear()
     console.log("Criando Produto");
     console.log("");
-    readline.question("Informe o nome do produto: ")
-    readline.questionFloat("Informe o preço do produto: ")
-    readline.questionInt("Informe a quantidade de produto disponível em estoque: ")
+    let nomeProduto = readline.question("Informe o nome do produto: ")
+    let precoProduto = readline.questionFloat("Informe o preço do produto: ")
+    let estoqueProduto = readline.questionInt("Informe a quantidade de produto disponível em estoque: ")
+    idContagem++;
+    let produto = {
+        id: idContagem,
+        nome: nomeProduto,
+        preco: precoProduto,
+        estoque: estoqueProduto,
+    }
+    produtos.push(produto)
     readline.question("Produto criado com sucesso! Pressione ENTER para continuar")
-    console.clear()
+
 }
 
 
@@ -364,7 +398,7 @@ function editarProtudos(){
          console.log("|             EDITAR PRODUTOS            |");
          console.log("|----------------------------------------|");
          console.log("|\t\t\t\t\t |");
-         console.log("| (1) Ração seca cães 5kg \t\t |");
+         console.log(produtos)
          console.log("|\t\t\t\t\t |");
          console.log("| (0) Voltar \t\t\t\t |");
          console.log("|\t\t\t\t\t |");
@@ -436,26 +470,7 @@ function exibirProdutos(){
         console.log("|           PRODUTOS EM ESTOQUE          |");
         console.log("|----------------------------------------|");
         console.log("|\t\t\t\t\t |");
-        console.log("| Ração seca cães 5kg R$50,00            |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Ração seca gatos 2kg R$28,00           |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Petisco frango cães 100g R$12,00       |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Comedouro P R$15,00                    |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Comedouro M R$26,00                    |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Comedouro G R$34,00                    |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Vermífugo cães e gatos 25ml R$40,00    |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Antitoxico cães e gatos 30ml R$22,00   |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Shampoo cães filhotes 200ml R$24,00    |");
-        console.log("| (15 Disponível)                        |");
-        console.log("| Shampoo cães adultos 200ml R$21,00     |");
-        console.log("| (15 Disponível)                        |");
+        console.log(produtos);
         console.log("|\t\t\t\t\t |");
         console.log("| (0) Voltar \t\t\t\t |");
         console.log("|\t\t\t\t\t |");
@@ -484,3 +499,18 @@ do{
     telaPrincipal()
     
 }while(opcao !== 0)
+
+    https://www.elraphael.com.br/como-atualizar-propriedades-objetos-array/#:~:text=Para%20atualizar%20o%20objeto%20dentro,arrat%20original%20não%20será%20alterado.
+
+    https://www.alura.com.br/conteudo/javascript-manipulando-objetos
+
+
+
+
+
+
+
+
+
+
+
