@@ -5,14 +5,14 @@ let opVendas
 let idContagem = 2
 
 let racaoCachorro = {
-    id: 100,
+    id: 1,
     nome: "Ração seca cachorro 5kg",
     preco: 50.00,
     estoque: 15.00,
 }
 
 let racaoGato = {
-    id: 101,
+    id: 2,
     nome: "Ração seca gato 5kg",
     preco: 30.00,
     estoque: 15,
@@ -328,16 +328,17 @@ function estoque() {
 
 
 function excluirProduto() {
-    let opExcluirProduto = 1;
-    while (opExcluirProduto > -1) {
+    let prodApagar = 1;
+    while (prodApagar > 0) {
         console.clear()
         console.log("------------------------------------------");
         console.log("|             EXCLUIR PRODUTO            |");
         console.log("|----------------------------------------|");
         console.log("");
-        console.log("Op\tID\tproduto")
+        console.log(" ID\tPRODUTO")
+        console.log("");
         for (let i = 0; i < produtos.length; i++) {
-            console.log(`#${i}\t${produtos[i].id}\t${produtos[i].nome}`);
+            console.log(` #${produtos[i].id}\t${produtos[i].nome}`);
         }
         console.log("");
         console.log(" (0) Voltar ");
@@ -346,7 +347,8 @@ function excluirProduto() {
         // opExcluirProduto = readline.questionInt("Escolha uma opção: ")
         // produtos.splice(opExcluirProduto, 1);
 
-        let prodApagar = readline.questionInt("ID do produto que deseja apagar: ")
+         prodApagar = readline.questionInt("ID do produto que deseja apagar: ")
+        
         for (let i = 0; i < produtos.length; i++) {
             if (produtos[i].id == prodApagar) {
                 produtos.splice(i, 1);
@@ -404,16 +406,18 @@ function editarProtudos() {
         console.log("------------------------------------------");
         console.log("|             EDITAR PRODUTOS            |");
         console.log("|----------------------------------------|");
-        console.log("|\t\t\t\t\t |");
-        console.log("Op\tID\tproduto")
+        console.log("");
+        console.log(" ID\tPRODUTO")
+        console.log("");
         for (let i = 0; i < produtos.length; i++) {
-            console.log(`#${i}\t${produtos[i].id}\t${produtos[i].nome}`);
+            console.log(` #${produtos[i].id}\t${produtos[i].nome}`);
         }
         console.log("");
         console.log(" (0) Voltar ");
         console.log("");
         console.log("_________________________________________");
         opEditarProdutos = readline.questionInt("Entre com o ID do produto que deseja modificar: ")
+        
 
         for (let i = 0; i < produtos.length; i++) {
             if (produtos[i].id == opEditarProdutos) {
@@ -421,9 +425,8 @@ function editarProtudos() {
                 console.log("------------------------------------------");
                 console.log("|             EDITAR PRODUTOS            |");
                 console.log("|----------------------------------------|");
-                console.log("|\t\t\t\t\t |");
-                console.log(`\tId: ${produtos[i].id}\n\tProduto: ${produtos[i].nome}\n\tPreço: ${produtos[i].preco}\n\tEstoque: ${produtos[i].estoque}\n}`);
-                console.log("|\t\t\t\t\t |");
+                console.log("");
+                console.log(`\tId: ${produtos[i].id}\n\tProduto: ${produtos[i].nome}\n\tPreço: ${produtos[i].preco}\n\tEstoque: ${produtos[i].estoque}\n`);
                 console.log("_________________________________________");
 
                 console.log("Caso nao queira modificar o campo tecle enter!");
@@ -444,50 +447,6 @@ function editarProtudos() {
 
     } console.clear()
 }
-
-
-/* function produto1() {
-    console.clear()
-    for (let edProtudo1 = 1; edProtudo1 > 0;) {
-        console.log("------------------------------------------");
-        console.log("|             EDITAR PRODUTOS            |");
-        console.log("|----------------------------------------|");
-        console.log("|\t\t\t\t\t |");
-        console.log("| (1) Ração seca cães 5kg \t\t |");
-        console.log("| (2) Quantidade em estoque: 15 \t |");
-        console.log("| (3) Preço: R$50,00 \t\t\t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("| (0) Voltar \t\t\t\t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|________________________________________|");
-        edProtudo1 = readline.questionInt("Escolha uma opção: ")
-        switch (edProtudo1) {
-            case 1:
-                readline.question("Informe o novo nome do protudo: ")
-                readline.question("Nome alterado com sucesso! Pressione ENTER para continuar")
-                break;
-            case 2:
-                readline.questionInt("Informe a quantidade disponível em estoque: ")
-                readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar")
-                break;
-            case 3:
-                readline.questionFloat("Informe o novo preço do produto: ")
-                readline.question("Preço alterado com sucesso! Pressione ENTER para continuar")
-                break;
-            case 0:
-                console.log("");
-                break;
-            default:
-                readline.question("Opção inválida! Precione ENTER para continuar")
-                break
-        } console.clear()
-    }
-} */
-
-
-
-
-
 
 
 
