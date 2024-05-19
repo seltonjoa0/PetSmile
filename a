@@ -1,0 +1,42 @@
+opEditarProdutos = readline.questionInt("Entre com o ID do produto que deseja modificar: ")
+        
+
+for (let i = 0; i < produtos.length; i++) {
+    if (produtos[i].id == opEditarProdutos) {
+        console.clear();
+        console.log("------------------------------------------");
+        console.log("|             EDITAR PRODUTOS            |");
+        console.log("|----------------------------------------|");
+        console.log("");
+        console.log(`\tId: ${produtos[i].id}\n\tProduto: ${produtos[i].nome}\n\tPreço: ${produtos[i].preco}\n\tEstoque: ${produtos[i].estoque}\n`);
+        console.log("_________________________________________");
+
+        console.log("Caso nao queira modificar o campo tecle enter!");
+        let nomeA = readline.question("Nome: ");
+        if (nomeA != "") {
+            produtos[i].nome = nomeA;
+        }
+        let precoA = readline.question("Preço: ");
+        if (precoA != "") {
+            produtos[i].preco = parseInt(precoA);
+        }
+        let estoqueA = readline.question("Estoque: ");
+        if (estoqueA != "") {
+            produtos[i].estoque = parseInt(estoqueA);
+        }
+    }
+}
+
+} console.clear()
+}
+
+
+console.log("");
+    console.log("Compra registrada com sucesso!");
+    console.log(`Cliente: ${nomeCliente}`);
+    console.log(`Forma de pagamento: ${formaPagamento}`);
+    console.log("Produtos comprados:");
+    for(let i in produtosComprados){
+        nomeProduto.push(produtosComprados[i].produto.nome)
+    }
+    compras.push({ cliente: nomeCliente, pagamento: formaPagamento, produtos: nomeProduto, preço: preco, id: idCompra})

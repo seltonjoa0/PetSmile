@@ -22,8 +22,10 @@ let racaoGato = {
 
 let produtos = [racaoCachorro, racaoGato];
 
+let idCompra = 1
 
 
+let compras = []
 
 
 
@@ -56,6 +58,9 @@ function telaPrincipal() {
         case 0:
             console.log("Saindo do sistema...");
             break;
+        case 3:
+            registrarCompra()
+            break;
         default:
             console.log("Opção Inválida")
             readline.question("Aperte ENTER para continuar...")
@@ -70,22 +75,18 @@ function telaVendas() {
         console.log("|                 VENDAS                 |");
         console.log("|----------------------------------------|");
         console.log("|\t\t\t\t\t |");
-        console.log("|\t    (1) Vendas Pendentes  \t |");
-        console.log("|\t    (2) Vendas Realizadas   \t |");
-        console.log("|\t    (3) Vendas Canceladas  \t |");
+        console.log("|\t    (1) Registrar nova venda  \t |");
+        console.log("|\t    (2) Vendas realizadas   \t |");
         console.log("|\t    (0) Voltar  \t\t |");
         console.log("|\t\t\t\t\t |");
         console.log("|________________________________________|");
         opVendas = readline.questionInt("Escolha uma Opção: ")
         switch (opVendas) {
             case 1:
-                telaVenPendente()
+                registrarCompra()
                 break;
             case 2:
                 telaVenRealizadas()
-                break;
-            case 3:
-                telaVenCanceladas()
                 break;
             case 0:
                 console.log("");
@@ -99,70 +100,7 @@ function telaVendas() {
     }
 }
 
-function telaVenPendente() {
-    console.clear()
-    for (let opVenPendente = 1; opVenPendente > 0;) {
-        console.clear()
-        console.log("------------------------------------------");
-        console.log("|            VENDAS PENDENTES            |");
-        console.log("|----------------------------------------|");
-        console.log("|\t Opção | ID Venda | Valor \t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (1)\t   #01 \t    R$ 350,00    |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (0) Para Voltar \t\t |");
-        console.log("|________________________________________|");
-        opVenPendente = readline.question("Escolha uma opção: ")
-        switch (opVenPendente) {
-            case "1":
-                telaVenPendente2()
-                break;
-            case "0":
-                console.log("");
-                break;
-            default:
-                console.log("Opção inválida.");
-                readline.question("Aperte ENTER para continuar...")
-        }
-        console.clear()
 
-    }
-}
-
-function telaVenPendente2() {
-    console.clear()
-    for (let opVenPendete2 = 4; opVenPendete2 > 2;) {
-        console.log("------------------------------------------");
-        console.log("|            VENDAS PENDENTES            |");
-        console.log("|----------------------------------------|");
-        console.log("|           ID Venda  |  Valor           |");
-        console.log("|              #01    |    R$ 350,00     |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t (1) Para confirmar a venda\t |");
-        console.log("|\t (2) Para cancelar a venda\t |");
-        console.log("|\t (0) Para voltar \t\t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|________________________________________|");
-        opVenPendete2 = readline.questionInt("Escolha uma opção: ")
-        switch (opVenPendete2) {
-            case 1:
-                readline.question("Venda confirmada! Pressione ENTER para continuar...")
-                break;
-            case 2:
-                readline.question("Venda Cancelada! Pressione ENTER para continuar...")
-                break;
-            case 0:
-                console.log("");
-                break;
-            default:
-                readline.question("Opção inválida. Precione Enter para continuar...")
-                break;
-
-
-        } console.clear()
-
-    }
-}
 
 function telaVenRealizadas() {
     console.clear()
@@ -170,115 +108,37 @@ function telaVenRealizadas() {
         console.log("------------------------------------------");
         console.log("|            VENDAS REALIZADAS           |");
         console.log("|----------------------------------------|");
-        console.log("|\t Opção | ID Venda | Valor \t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (1)\t   #01 \t     350,00      |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (0) Para Voltar \t\t |");
+        console.log(" ID\t Preço\t\t Cliente");
+        console.log("");
+        for(let i in compras){
+            console.log(` ${compras[i].id}\t R$${compras[i].preço.toFixed(2)}\t  ${compras[i].cliente}`);
+
+        }
+        console.log("");
+        console.log(" (0) Voltar ");
         console.log("|________________________________________|");
         opVenRealizadas = readline.questionInt("Escolha uma opção: ")
-        switch (opVenRealizadas) {
-            case 1:
-                telaVenRealizadas2()
-                break
-            case 0:
+        for( let i in compras){
+            if(opVenRealizadas == compras[i].id){
+                console.clear()
+                console.log("------------------------------------------");
+                console.log("|            VENDAS REALIZADAS           |");
+                console.log("|----------------------------------------|");
+                console.log(` ID: ${compras[i].id}`);
+                console.log(` Cliente: ${compras[i].cliente}`);
+                console.log(` Forma de pagamento: ${compras[i].pagamento}`);
+                console.log(" Produtos comprados:");
+                console.log(` ${compras[i].produtos}`);
                 console.log("");
-                break
-            default:
-                readline.question("Opção inválida! Pressione ENTER para continuar")
-                break
+                readline.question(" Pressione ENTER para voltar ")
+
+
+            }
         }
+
+        
         console.clear()
     }
-}
-
-function telaVenRealizadas2() {
-    console.clear()
-    for (let opVenRealizadas2 = 1; opVenRealizadas2 > 0;) {
-        console.log("------------------------------------------");
-        console.log("|            VENDAS REALIZADAS           |");
-        console.log("|----------------------------------------|");
-        console.log("|    Cliente  |   Valor   |  ID Venda    |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|     Ana        350,00         #1       |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|    (0) Para Voltar \t\t\t |");
-        console.log("|________________________________________|");
-        opVenRealizadas2 = readline.questionInt("Escolha uma opção: ")
-        switch (opVenRealizadas2) {
-            case 0:
-                console.log("");
-                break;
-            default:
-                readline.question("Opção inválida! Pressione ENTER para continuar");
-                break
-
-        }
-        console.clear()
-    }
-}
-
-
-
-
-
-
-
-
-function telaVenCanceladas() {
-    console.clear()
-    for (let opVenCanceladas = 1; opVenCanceladas > 0;) {
-        console.log("------------------------------------------");
-        console.log("|            VENDAS CANCELADAS           |");
-        console.log("|----------------------------------------|");
-        console.log("|\t Opção | ID Venda | Valor \t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (1)\t   #02 \t    531,35 \t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t  (0) Para Voltar \t\t |");
-        console.log("|________________________________________|")
-        opVenCanceladas = readline.questionInt("Escolha uma opção: ")
-        switch (opVenCanceladas) {
-            case 1:
-                telaVenCanceladas2()
-                break;
-            case 0:
-                console.log("");
-                break;
-            default:
-                readline.question("Opção inválida! Pressione ENTER para continuar")
-                break
-
-        } console.clear()
-
-    }
-}
-
-function telaVenCanceladas2() {
-    console.clear()
-    for (let opVenCanceladas2 = 3; opVenCanceladas2 > 0;) {
-        console.log("------------------------------------------");
-        console.log("|            VENDAS CANCELADAS           |");
-        console.log("|----------------------------------------|");
-        console.log("|    Cliente  |   Valor   |  ID Venda    |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|     Ítalo       531,35       #2        |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|\t\t\t\t\t |");
-        console.log("|    (0) Para Voltar \t\t\t |");
-        console.log("|________________________________________|")
-        opVenCanceladas2 = readline.questionInt("Escolha uma opção: ")
-        switch (opVenCanceladas2) {
-            case 0:
-                console.log("");
-                break;
-            default:
-                readline.question("Opção inválida! Pressione ENTER para continua")
-                break
-        } console.clear()
-    }
-
 }
 
 
@@ -477,8 +337,76 @@ function exibirProdutos() {
     }
 }
 
+function registrarCompra() {
+    console.clear();
+    console.log("------------------------------------------");
+    console.log("|             REGISTRAR COMPRA           |");
+    console.log("|----------------------------------------|");
+    console.log("");
+
+    // Mostra os produtos disponíveis para compra
+    console.log("Produtos disponíveis para compra:");
+    console.log("");
+    for (let i = 0; i < produtos.length; i++) {
+        console.log(`#${produtos[i].id}: ${produtos[i].nome} - R$ ${produtos[i].preco.toFixed(2)} - Estoque: ${produtos[i].estoque}`);
+    }
+    console.log("");
+
+    // Captura os produtos a serem comprados
+    let produtosComprados = []
+    let continuarComprando = true;
+    while (continuarComprando) {
+        let idProduto = readline.questionInt("Digite o ID do produto que deseja comprar (0 para finalizar): ");
+        if (idProduto === 0) {
+            continuarComprando = false;
+            break;
+        }
+        let quantidade = readline.questionInt("Digite a quantidade desejada: ");
+
+        // Verifica se o produto está disponível no estoque e se a quantidade desejada está disponível
+        let produtoSelecionado = produtos.find(produto => produto.id === idProduto);
+        if (produtoSelecionado && produtoSelecionado.estoque >= quantidade) {
+            produtosComprados.push({ produto: produtoSelecionado, quantidade: quantidade });
+            produtoSelecionado.estoque -= quantidade; // Atualiza o estoque
+        } else {
+            console.log("Produto selecionado ou quantidade indisponível. Por favor, tente novamente.");
+        }
+    }
+
+    // Captura o nome do cliente e a forma de pagamento
+    let nomeCliente = readline.question("Digite o nome do cliente: ");
+    let formaPagamento = readline.question("Digite a forma de pagamento: ");
+
+    console.log("");
+    console.log("Compra registrada com sucesso!");
+    console.log(`Cliente: ${nomeCliente}`);
+    console.log(`Forma de pagamento: ${formaPagamento}`);
+    console.log("Produtos comprados:");
+    let nomeProduto = []
+    for(let i in produtosComprados){
+        nomeProduto.push(produtosComprados[i].produto.nome)
+    }
+    let preco = 0 
+    for (let i = 0; i < produtosComprados.length; i++) {
+        let precoAA = (produtosComprados[i].produto.preco * produtosComprados[i].quantidade)
+        preco += precoAA
+        console.log(`${produtosComprados[i].produto.nome} - Quantidade: ${produtosComprados[i].quantidade}`);
+    }
+    compras.push({ cliente: nomeCliente, pagamento: formaPagamento, produtos: nomeProduto, preço: preco, id: idCompra})
+    idCompra++
+    console.log(compras);
+    console.log("");
+    readline.question("Pressione ENTER para continuar...");
+
+    
 
 
+
+
+
+
+
+}
 
 
 
@@ -493,15 +421,11 @@ do {
 
 
 
-function exProduto() {
-    for (let incremento = 0; incremento < produtos.length; incremento++) {
-        console.log(produtos[incremento].nome)
-    }
 
 
 
 
-}
+
 
 
 
