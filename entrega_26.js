@@ -8,7 +8,7 @@ let racaoCachorro = {
     id: 1,
     nome: "Ração seca cachorro 5kg",
     preco: 50.00,
-    estoque: 15.00,
+    estoque: 15,
 }
 
 let racaoGato = {
@@ -126,6 +126,7 @@ function telaVenRealizadas() {
                 console.log("|----------------------------------------|");
                 console.log(` ID: ${compras[i].id}`);
                 console.log(` Cliente: ${compras[i].cliente}`);
+                console.log(` Preço: R$${compras[i].preço.toFixed(2)}`);
                 console.log(` Forma de pagamento: ${compras[i].pagamento}`);
                 console.log(" Produtos comprados:");
                 console.log(` ${compras[i].produtos}`);
@@ -343,70 +344,123 @@ function registrarCompra() {
     console.log("|             REGISTRAR COMPRA           |");
     console.log("|----------------------------------------|");
     console.log("");
-
-    // Mostra os produtos disponíveis para compra
     console.log("Produtos disponíveis para compra:");
     console.log("");
+
     for (let i = 0; i < produtos.length; i++) {
         console.log(`#${produtos[i].id}: ${produtos[i].nome} - R$ ${produtos[i].preco.toFixed(2)} - Estoque: ${produtos[i].estoque}`);
     }
     console.log("");
 
-    // Captura os produtos a serem comprados
-    let produtosComprados = []
+    let produtosComprados = [];
     let continuarComprando = true;
-    while (continuarComprando) {
-        let idProduto = readline.questionInt("Digite o ID do produto que deseja comprar (0 para finalizar): ");
-        if (idProduto === 0) {
-            continuarComprando = false;
-            break;
-        }
-        let quantidade = readline.questionInt("Digite a quantidade desejada: ");
 
-        // Verifica se o produto está disponível no estoque e se a quantidade desejada está disponível
+    while (continuarComprando) {
+        let idProduto = readline.question("Digite o ID do produto que deseja comprar (ou 'C' para cancelar a compra): ");
+        
+        if (idProduto.toUpperCase() === 'C') {
+            console.log("Compra cancelada. Nenhum produto será registrado.");
+            return;
+        }
+
+        idProduto = Number(idProduto);
+
+        if (isNaN(idProduto)) {
+            console.log("ID de produto inválido. Por favor, insira um número válido.");
+            continue;
+        }
+
+        let quantidade = readline.questionInt("Digite a quantidade desejada: ");
         let produtoSelecionado = produtos.find(produto => produto.id === idProduto);
+
         if (produtoSelecionado && produtoSelecionado.estoque >= quantidade) {
             produtosComprados.push({ produto: produtoSelecionado, quantidade: quantidade });
-            produtoSelecionado.estoque -= quantidade; // Atualiza o estoque
+            produtoSelecionado.estoque -= quantidade;
+            console.log(`${produtoSelecionado.nome} adicionado ao carrinho. Quantidade: ${quantidade}`);
         } else {
             console.log("Produto selecionado ou quantidade indisponível. Por favor, tente novamente.");
+            continue;
+        }
+
+        let resposta = readline.question("Deseja continuar comprando? (S para continuar, N para finalizar): ");
+        if (resposta.toUpperCase() === 'N') {
+            if (produtosComprados.length === 0) {
+                console.log("Nenhum produto foi selecionado. Compra cancelada.");
+                return;
+            } else {
+                continuarComprando = false;
+            }
         }
     }
 
-    // Captura o nome do cliente e a forma de pagamento
     let nomeCliente = readline.question("Digite o nome do cliente: ");
-    let formaPagamento = readline.question("Digite a forma de pagamento: ");
+    console.clear()
+    let formaPagamento
+    let rep = true
+    while(rep == true){
+        console.log("1- Pix");
+    console.log("2- Debito");
+    console.log("3- Crédito");
+    console.log("4- Dinheiro");
+    formaPagamento = readline.questionInt("Escolha uma opção: ")
+    switch(formaPagamento){
+        case 1:
+            formaPagamento = "Pix"
+            rep = false
+        break
+        case 2:
+            formaPagamento = "Débito"
+            rep = false
+        break
+        case 3:
+            formaPagamento = "Crédito"
+            rep = false
+        break
+        case 4:
+            formaPagamento = "Dinheiro"
+            rep = false
+        break
+        default:
+            readline.question("Opção inválida! Pressione ENTER para tentar novamente.")
+            console.clear()
+        break
+    }
+
+    } 
+    
+    console.clear()
 
     console.log("");
     console.log("Compra registrada com sucesso!");
     console.log(`Cliente: ${nomeCliente}`);
     console.log(`Forma de pagamento: ${formaPagamento}`);
     console.log("Produtos comprados:");
-    let nomeProduto = []
-    for(let i in produtosComprados){
-        nomeProduto.push(produtosComprados[i].produto.nome)
-    }
-    let preco = 0 
+
+    let nomeProduto = [];
+    let preco = 0;
     for (let i = 0; i < produtosComprados.length; i++) {
-        let precoAA = (produtosComprados[i].produto.preco * produtosComprados[i].quantidade)
-        preco += precoAA
+        let precoAA = produtosComprados[i].produto.preco * produtosComprados[i].quantidade;
+        preco += precoAA;
+        nomeProduto.push(produtosComprados[i].produto.nome);
         console.log(`${produtosComprados[i].produto.nome} - Quantidade: ${produtosComprados[i].quantidade}`);
     }
-    compras.push({ cliente: nomeCliente, pagamento: formaPagamento, produtos: nomeProduto, preço: preco, id: idCompra})
-    idCompra++
-    console.log(compras);
+
+    compras.push({ cliente: nomeCliente, pagamento: formaPagamento, produtos: nomeProduto, preço: preco, id: idCompra });
+    idCompra++;
     console.log("");
     readline.question("Pressione ENTER para continuar...");
-
-    
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
